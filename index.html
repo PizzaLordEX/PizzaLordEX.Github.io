@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-body {margin: 0;}
+body {margin: 0;
+    
+    font-family: 'Montserrat'
+}
+h1
+{
+    font-size: 40px;
+    text-shadow: #111;
+    text-align: center;
+    color: white;
+    background-color: #333;
+    padding-top: 2%;
+    padding-bottom:2%;
+     margin: 0%;
+}
 ul.topnav {
+    text-align: center;
     list-style-type: none;
     margin: 0;
+    padding-top: 0%;
     padding-left: 0%;
     overflow: hidden;
     background-color: #333;
@@ -22,7 +38,7 @@ ul.topnav li a {
 
 ul.topnav li a:hover:not(.active) {background-color: #111;}
 
-//ul.topnav li a.active {background-color: #1A5ACA;}
+//ul.topnav li a.active {background-color: #8fd5cd;}
 
 ul.topnav li.right {float: right;}
 ul.topnav li.center {float: center;}
@@ -83,7 +99,7 @@ ul.topnav li.center {float: center;}
 }
 
 .active {
-    background-color: #2C8EFE !important;
+    background-color: #91d5cd !important;
 }
 
 .main {
@@ -105,6 +121,12 @@ div.container {
 	text-align: right;
 	padding: 18px 18px 20px;
     	text-decoration: none;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 header, footer {
@@ -135,10 +157,11 @@ article {
     margin-left: 0px;
     border-left: 0px solid gray;
     padding: 1em;
-    padding-left: 30%;
+    padding-left: 0%;
     overflow: hidden;
+    text-align: center;
 }
-.zoom {
+#zoom {
     padding: 0px;
     background-color: black;
     transition: transform .2s; /* Animation */
@@ -147,14 +170,15 @@ article {
     margin: 0 auto;
 }
 
-.zoom:hover {
-    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+#zoom:hover {
+    transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 </style>
 
-
+<link href='https://fonts.googleapis.com/css?family=Montserrat ' rel="stylesheet">
 <head>
+    <h1>雪 LIXUE ART</h1>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -165,6 +189,7 @@ article {
 
 <ul class="topnav">
   <li><a class="active"	href="#Home"   id="Home"    onclick="showTabA();">Home</a></li>
+  <li><a class=""    href="#UI"   id="UI"    onclick="showTabC();">UI</a></li>
   <li><a class=""	href="#news"   id="News"    onclick="showTabB();">Concept art</a></li>
  
   
@@ -185,16 +210,18 @@ article {
 <div  id="HomeContent" class="tabcontent">
 	<div class="container">
 	<article>
-	<h2> C-034 </h2>
     
-    <img class="zoom" style= "width: 200px;" alt="pic" src="c-034.jpg"/>
+    <img class="center" id="zoom" style= "width: 25%; height: 25%;" alt="pic" src="CAT.jpg"/>
     
-	<p>
-    I'm glad you came to check out my work</p><p>
-    Unfortunately</p><p>
-    This Site is still under construction sorry :(</p><p>
-    Please check out my Artstation for more 
-    <a href="https://www.artstation.com/snowdong"> work</a>
+	<p> I'm glad you came to check out my work </p>
+    <h2>About me</h2>
+    <p>
+    I have a passion to work as a 2D artist, I really enjoy doing art and approach it with professional attitude towards completing and being responsible for the work I create. I find I can adapt well to many differening work enviroments.
+   </p><h2>
+   Contact
+    </h2><p>
+    lixueart@gmail.com</p><p><a href="www.artstation.com/snowdong" >
+    Artstation</a>
     </p>
 	</article>
 	</div>
@@ -209,33 +236,46 @@ article {
 
 <div class="container">
     <article>
-        <h2> Angel cat </h2>
+        <h2> Twins </h2>
+         <img id="zoom" style= "width: 30%; height: 30%;" alt="pic" src="c-033and034.jpg"/>
         
-        <img class="zoom" style= "width: 200px; height: 200px" alt="pic" src="angle2.jpg"/>
         
-        <p title="Solutions" data-toggle="popover" data-trigger="hover" data-content="Discussions">One of the many cats I made </p>
-        
-    </article>
-</div>
-
-<div class="container">
-    <article>
-        <h2> Devil cat </h2>
-        
-        <img class="zoom" style= "width: 200px; height: 200px" alt="pic" src="devil2.jpg"/>
-        
-        <p title="Solutions" data-toggle="popover" data-trigger="hover" data-content="Discussions">One of the many cats I made </p>
+        <p title="Solutions" data-toggle="popover" data-trigger="hover" data-content="Discussions">A scifi  character design </p>
         
     </article>
 </div>
 
 <div class="container">
     <article>
-        <h2> korean Doll </h2>
+        <h2 class="center"> CyaCya </h2>
         
-        <img class="zoom" style= "width: 30%; height: 30%;" alt="pic" src="Doll.jpg"/>
+        <img class="center" id="zoom" style= "width: 30%; height: 30%;" alt="pic" src="Cyacya.jpg"/>
         
-        <p title="Solutions" data-toggle="popover" data-trigger="hover" data-content="Discussions">One of the many cats I made </p>
+        <p title="Solutions" data-toggle="popover" data-trigger="hover" data-content="Discussions"> Created for the weta workshop competition steam punk/korean theme. </p>
+        
+    </article>
+</div>
+
+<div class="container">
+    <article>
+        <h2> Cat Collection </h2>
+        
+        <img class="center" id="zoom" style= "width: 40%; height: 40%;" alt="pic" src="1.jpg"/>
+        
+        <p title="Solutions" data-toggle="popover" data-trigger="hover" data-content="Discussions">Some of the many cat character designs I made.</p>
+        
+    </article>
+</div>
+
+
+
+<div class="container">
+    <article>
+        <h2 class="center"> Sushi Collection </h2>
+        
+        <img class="center" id="zoom" style= "width: 40%; height: 40%;" alt="pic" src="shushi.jpg"/>
+        
+        <p class="center" >Sushi characters made for a board game project.</p>
         
     </article>
 </div>
@@ -243,87 +283,56 @@ article {
 
 </div>
 
-<div  id="ContactContent" class="tabcontent">
+<div  id="UIContent" class="tabcontent">
 
-	<div class="container">
-	<header>
-	   <h1>Your Discussions</h1>
-	</header>
-	<nav>
-  	<ul>
- 	   <li><img style= "width: 100%;" alt="pic" src="Profile2.png"/></li>
- 	</ul>
-	</nav>
-	<article>
-	<h2> Your Discussion 1</h2>
-	<p>Stuff 1</p>
-	<div class= "extender"><p> View 		Comment</p></div>
-	<div class= "extender"><h1 class="fa fa-edit"></h1><h1 class="fa fa-trash"></h1></div>
-	</article>
-	
-	</div>
+    <div class="container">
+    <article>
+        <h2 class="center"> Icons (fantasy)</h2>
+        
+        <img class="center" id="zoom" style= "width: 40%; height: 40%" alt="pic" src="Icons.png"/>
+        
+        <p class="center" > A set of game icons designed for a fanatasy or MOBA game.</p>
+        
+    </article>
+    </div>
 
-	<div class="container">
-	<header>
-	   <h1>Team Discussions </h1>
-	</header>
-	<nav>
-  	<ul>
- 	   <li><img style= "width: 100%;" alt="pic" src="Profile3.png"/></li>
- 	</ul>
-	</nav>
-	<article>
-	<h2> Team Discussions 1</h2>
-	<p>Stuff 2</p>
-	</article>
-	<div class= "extender"><p> View 		Comment</p></div>
-	<footer> </footer>
-        </div>
+<div class="container">
+    <article>
+        <h2 class="center"> Icons (cute) </h2>
+        
+        <img class="center" id="zoom" style= "width: 25%; height: 25%" alt="pic" src="item.jpg"/>
+        
+        <p class="center" title="Solutions">A set of game icons designed for the game Retail Ramage.</p>
+        
+    </article>
+</div>
 
-	<div class="container">
-	<nav>
-  	<ul>
- 	   <li><img style= "width: 100%;" alt="pic" src="Profile1.png"/></li>
- 	</ul>
-	</nav>
-	<article>
-	<h2> Team Discussion 2 </h2>
-	<p>Stuff 2</p>
-	<div class= "extender"><p> View 		Comment</p></div>
-	</article>
-	<footer> </footer>
-        </div>
+<div class="container">
+    <article>
+        <h2 class="center"> Cherry Rush </h2>
+        
+        <img class="center" id="zoom" style= "width: 40%; height: 40%;" alt="pic" src="log2o.png"/>
+        
+        <p class="center" > Opening logo for the game Cherry Rush </p>
+        
+    </article>
+</div>
 
+
+
+    
 </div>
 
 <div  id="AboutContent" class="tabcontent">
 <article>
-	<h1> Assignment 3 </h1>
-	<p> Created by tgil998</p>
-	<h2> Acknowledgements</h2>
-	<p> With thanks to www.w3schools.com for tutorials and many coding examples modified and used in this</p>
-	<p> With thanks to fontawesome.com for fonts free fonts included in the project </p>
-
-	<table id="showNews"> </table>
+	
 </article>
 </div>
 
 
 
 <div  id="CreateSolutionContent" class="tabcontent">
-<ul class="topnav">
 
-  <li class="center"><a class="" href="#Font"><i class="fa fa-font" id="font" data-toggle="tooltip" data-placement="bottom" title="font" ></i></a> </li>
-  <li class="center"><a class="" href="#Bold"><i class="fa fa-bold" id="bold" data-toggle="tooltip" data-placement="bottom" title="bold" ></i></a> </li>
-  <li class="center"><a class="" href="#Italic"><i class="fa fa-italic" id="italic" data-toggle="tooltip" data-placement="bottom" title="italic" ></i></a> </li>
-  <li class="center"><a class="" href="#Underline"><i class="fa fa-underline" id="underline" data-toggle="tooltip" data-placement="bottom" title="Underline" ></i></a> </li>
- 
-  <li class=""><a class="" href="#Left"><i class="fa fa-align-left" id="align-left" data-toggle="tooltip" data-placement="bottom" title="Align left" ></i> </a></li>
-  <li class=""><a class="" href="#Justify"><i class="fa fa-align-justify" id="align-justify"data-toggle="tooltip" data-placement="bottom" title="Align justify" ></i></a> </li>
-  <li class=""><a class="" href="#Right"><i class="fa fa-align-right" id="align-right"data-toggle="tooltip" data-placement="bottom" title="Align right" ></i></a> </li>
-   
-
-</ul>
 
 <article>
 	<h2> Solution <h1/>
@@ -453,8 +462,8 @@ function showTabC()
 	{
             currentTab = "TabC";
             showNoTabs();
-	    document.getElementById("Contact").className += " active";
-            document.getElementById("ContactContent").style.display = "inline";
+	    document.getElementById("UI").className += " active";
+            document.getElementById("UIContent").style.display = "inline";
 
          }
 }
@@ -498,7 +507,7 @@ function showTabG()
  {	
          document.getElementById("HomeContent").style.display = "none";
          document.getElementById("NewsContent").style.display = "none";
-         document.getElementById("ContactContent").style.display = "none";
+         document.getElementById("UIContent").style.display = "none";
 	 document.getElementById("AboutContent").style.display = "none";
 	 document.getElementById("ProfileContent").style.display = "none";
 	 document.getElementById("CreateSolutionContent").style.display = "none";
@@ -506,21 +515,14 @@ function showTabG()
  //   document.getElementById("Profile").className = " ";
 	 document.getElementById("Home").className = " ";
 	 document.getElementById("News").className = " ";
-	// document.getElementById("Contact").className = " ";
+	 document.getElementById("UI").className = " ";
 //	 document.getElementById("About").className = " ";
 }
 
 
 </script>
 
-<script src="popper.min.js">
-function(){
-	$('[data-toggle="popover"]').popover();
-	$('[data-toggle="tooltips"]'). tooltips();
-   
-});
 
-</script>
 
 
 
