@@ -1,25 +1,550 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Travelers Taven</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Traveller's Tavern.json", {onProgress: UnityProgress});
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Travelers Taven</div>
-      </div>
+    <style>
+    body {margin: 0;
+        
+        font-family: 'Montserrat'
+    }
+    h1
+    {
+        font-size: 40px;
+        text-shadow: #111;
+        text-align: center;
+        color: white;
+        background-color: #333;
+        padding-top: 2%;
+        padding-bottom:2%;
+         margin: 0%;
+    }
+    ul.topnav {
+        text-align: center;
+        list-style-type: none;
+        margin: 0;
+        padding-top: 0%;
+        padding-left: 0%;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    ul.topnav li {float: left;}
+
+    ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 18px 20px;
+        text-decoration: none;
+    }
+
+    ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+    //ul.topnav li a.active {background-color: #8fd5cd;}
+
+    ul.topnav li.right {float: right;}
+    ul.topnav li.center {float: center;}
+
+    @media screen and (max-width: 600px){
+        ul.topnav li.right,
+        ul.topnav li {float: none;}
+    }
+        
+    .tabcontent {
+        display: none;
+        padding: 3px 0px;
+        border-top: none;
+        left: 0;
+    }
+    .icon-bar {
+        width: 100%;
+        background-color: #555;
+        overflow: auto;
+    }
+
+    .icon-bar a {
+        float: left;
+        width: 20%;
+        text-align: center;
+        padding: 12px 0;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 36px;
+    }
+
+    .icon-bar a:hover {
+        background-color: #000;
+    }
+
+    .active {
+        background-color: #91d5cd !important;
+    }
+
+    .main {
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+
+
+
+    // Boxes
+    div.container {
+        width: 100%;
+        border: 1px solid gray;
+    }
+    .extender
+    {
+        display: block;
+        color: black;
+        text-align: right;
+        padding: 18px 18px 20px;
+            text-decoration: none;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    
+    .unityCenter{
+        overflow: auto
+        width: 100%;
+        height: 100%;
+        
+    }
+
+    header, footer {
+        padding: 1em;
+        color: white;
+        background-color: #222;
+        clear: left;
+        text-align: center;
+    }
+
+    nav {
+        float: left;
+        max-width: 160px;
+        margin: 0;
+        padding: 1em;
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+       
+    nav ul a {
+        text-decoration: none;
+    }
+
+    article {
+        overflow: scroll;
+        margin-left: 0px;
+        border-left: 0px solid gray;
+        padding: 1em;
+        padding-left: 0%;
+        text-align: center;
+    }
+    #zoom {
+        padding: 0px;
+        background-color: black;
+        transition: transform .2s; /* Animation */
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    #zoom:hover {
+        transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        border: 4px solid #8fd5cd;
+    }
+
+    .popup {
+        /*display: block;
+        margin-left: auto;
+        margin-right: auto;*/
+        
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    /* The actual popup (appears on top) */
+    .popup .popuptext {
+        visibility: hidden;
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 160px;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+    }
+
+    /* Popup arrow */
+    .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+    /* Toggle this class when clicking on the popup container (hide and show the popup) */
+    .popup .show {
+        
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s
+    }
+
+    /* Add animation (fade in the popup) */
+    @-webkit-keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity:1 ;}
+    }
+    
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    </style>
+ <title>Spiced Kiwi</title>
+ <link rel="shortcut icon" href="TemplateData/favicon.ico">
+ <link rel="stylesheet" href="TemplateData/style.css">
+ <script src="TemplateData/UnityProgress.js"></script>
+ <script src="Build/UnityLoader.js"></script>
+ <script>
+   var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Traveller's Tavern.json", {onProgress: UnityProgress});
+     var unityInstance = UnityLoader.instantiate("unityContainer2", "Build/Web 01.json", {onProgress: UnityProgress});
+ </script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat ' rel="stylesheet">
+    <head>
+        <h1>Spiced Kiwi</h1>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Lixue Art</title>
+
+
+
+    <ul class="topnav">
+      <li><a class="active"    href="#Home"   id="Home"    onclick="showTabA();">Home</a></li>
+      <li><a class=""    href="#UI"   id="UI"    onclick="showTabC();">2D Fight Prototype</a></li>
+      <li><a class=""    href="#news"   id="News"    onclick="showTabB();">Travellern's Tavern</a></li>
+    </ul>
+
+
+    </head>
+
+    
+    <body style="background-color: white; background-image: url('bg.png')" onload="showTabA()">
+
+    <div class="main" >
+    <div  id="HomeContent" class="tabcontent">
+        <div class="container">
+        <article>
+        
+        <p> I'm glad you came to check out my work </p>
+        <h2>About me</h2>
+        </article>
+        </div>
+        
     </div>
-  </body>
+
+    <div  id="NewsContent" class="tabcontent">
+
+
+    <div class="container">
+        <article>
+        <h2> Traveller's Tavern </h2>
+         <p class="center" > Traveller's Tavern was a small group project done by a team of University students.
+         Whilst they unfortunately could not continue after the first year of dev work wrapped up due to work and University obligations they still put their all into making it! I will still endevour to keep updating the game 
+         </p>
+         <div class ="unityCenter">
+             <div class="webgl-content" style="top: 80%">
+                    <div id="unityContainer" style="width: 960px; height: 600px;"></div>
+                    <div class="footer">
+                        <div class="webgl-logo"></div>
+                        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                        <div class="title">Travelers Taven</div>
+                    </div>
+            </div>
+         </div>
+          
+            </div>
+        </div>
+        </article>
+    </div>
+
+    <div  id="UIContent" class="tabcontent">
+
+    <div class="container">
+    <article>
+        <h2 class="center"> 2D Fight Prototype </h2>
+        <p class="center" > A Small online multiplayer fighting game.</p>
+        <div class ="unityCenter">
+            <div class="webgl-content" style="top: 80%">
+            <div id="unityContainer2" style="width: 960px; height: 600px;" ></div>
+            <div class="footer">
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        </div>
+        
+
+        
+    </article>
+    </div>
+
+        
+    </div>
+
+    <div  id="AboutContent" class="tabcontent">
+    <article>
+        
+    </article>
+    </div>
+
+
+
+    <div  id="CreateSolutionContent" class="tabcontent">
+
+
+    <article>
+        <h2> Solution <h1/>
+        <form>
+        <input type="text" name="title" value="Your solution title">
+        </form>
+        <p></p>
+        <textarea name="message" rows="70" cols="160">
+        Your Solution information here.
+        </textarea>
+    </article>
+    </div>
+
+
+    <div  id="ProfileContent" class="tabcontent">
+    <div class="container">
+    <nav>
+        <ul>
+        </ul>
+        </nav>
+    <article>
+        
+        <h2> Profile <h1/>
+        <textarea name="message" rows="5" cols="120">
+        Your profile information here.
+        </textarea>
+    </article>
+    </div>
+
+
+
+    </div>
+    </body>
+
+
+
+
+    <script>
+     
+    //var x = document.getElementById("myBtn");
+    //x.addEventListener("click", showTabA);
+    //x.addEventListener("click", someOtherFunction);
+
+    var home = document.getElementById("Home");
+
+
+    function myFirstFunction() {
+        alert ("This is the myFirstFunction");
+    }
+
+    function someOtherFunction() {
+        alert ("This someOtherfunction was also executed!");
+    }
+
+    var currentTab = "";
+    function showTabA()
+    {
+        if (currentTab != "Home")
+         {
+           currentTab = "Home";
+            showNoTabs();
+            document.getElementById("Home").className += " active";
+            document.getElementById("HomeContent").style.display = "inline";
+         }
+    }
+    function LoadtabA()
+    {
+           currentTab = "Home";
+            showNoTabs();
+            document.getElementById("Home").className += " active";
+            document.getElementById("HomeContent").style.display = "inline";
+         }
+
+
+    function showTabB()
+    {
+             if (currentTab != "TabB")
+        {
+                currentTab = "TabB";
+            
+                showNoTabs();
+            document.getElementById("News").className += " active";
+                document.getElementById("NewsContent").style.display = "inline";
+             }
+    }
+
+    function showTabC()
+    {
+             if (currentTab != "TabC")
+        {
+                currentTab = "TabC";
+                showNoTabs();
+            document.getElementById("UI").className += " active";
+                document.getElementById("UIContent").style.display = "inline";
+
+             }
+    }
+        
+    function showTabD()
+    {
+             if (currentTab != "TabD")
+        {
+                currentTab = "TabD";
+                showNoTabs();
+            document.getElementById("About").className += " active";
+                document.getElementById("AboutContent").style.display = "inline";
+
+             }
+    }
+
+    function showTabF()
+    {
+             if (currentTab != "TabF")
+        {
+                currentTab = "TabF";
+                showNoTabs();
+            document.getElementById("Profile").className += " active";
+                document.getElementById("ProfileContent").style.display = "inline";
+
+             }
+    }
+
+    function showTabG()
+    {
+             if (currentTab != "TabG")
+        {
+                currentTab = "TabG";
+                showNoTabs();
+            document.getElementById("News").className += " active";
+                document.getElementById("CreateSolutionContent").style.display = "inline";
+
+             }
+    }
+          function showNoTabs()
+     {
+             document.getElementById("HomeContent").style.display = "none";
+             document.getElementById("NewsContent").style.display = "none";
+             document.getElementById("UIContent").style.display = "none";
+         document.getElementById("AboutContent").style.display = "none";
+         document.getElementById("ProfileContent").style.display = "none";
+         document.getElementById("CreateSolutionContent").style.display = "none";
+
+     //   document.getElementById("Profile").className = " ";
+         document.getElementById("Home").className = " ";
+         document.getElementById("News").className = " ";
+         document.getElementById("UI").className = " ";
+    //     document.getElementById("About").className = " ";
+    }
+    var modal = "";
+    var btn ="";
+    var span = "";
+    function clicker(imgname)
+    {
+       // var popup = document.getElementById(imgname+"pop");
+       // popup.classList.toggle("show");
+        
+        // Get the modal
+        modal = document.getElementById(imgname+"pop");
+        
+        // Get the button that opens the modal
+       // btn = document.getElementById(imgname+"myBtn");
+        
+        // Get the <span> element that closes the modal
+        span = document.getElementById(imgname+"close");
+        
+        // When the user clicks on the button, open the modal
+        //btn.onclick = function() {
+        modal.style.display = "block";
+      //  }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+
+   
 </html>
